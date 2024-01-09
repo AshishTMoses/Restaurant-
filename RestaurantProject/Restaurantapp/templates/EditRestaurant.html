@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center; margin-top:40px;">
+  <h4>Edit Restaurant Details</h4>
+
+</div>
+<div class="col-sm-12 col-xl-10" >
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Basic Form</h6>
+                            <form method="post" action="{% url 'update_restaurant' dataid=edit.id %}" enctype="multipart/form-data">
+                               {% csrf_token %}
+                                <div class="mb-3">
+                                    <label  class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" name="name" value="{{edit.Rest_name}}">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Place</label>
+                                    <input type="text" class="form-control" placeholder="Place" name="place" value="{{edit.Place}}">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Star level</label>
+                                    <input type="text" class="form-control" placeholder="Star level" name="star" value="{{edit.Star_rating}}">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Rate</label>
+                                    <input type="text" class="form-control" placeholder="Rate" name="rate" value="{{edit.Rate}}">
+
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-label" placeholder="Description" name="description" rows="5" cols="102">{{edit.Description}}</textarea>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Contact" name="contact" value="{{edit.Contact_No}}">
+
+                                </div>
+                                <label>Image display:</label>
+                                <img src="{{edit.Image.url}}" width="100px" height="100px"><br><br>
+                                <label>Image:</label>
+                                <input type="file" placeholder="Image" name="image" value="{{edit.Image.url}}"><br><br>
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="exampleInputPassword1" class="form-label">Password</label>-->
+<!--                                    <input type="password" class="form-control" id="exampleInputPassword1">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3 form-check">-->
+<!--                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                                </div>-->
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

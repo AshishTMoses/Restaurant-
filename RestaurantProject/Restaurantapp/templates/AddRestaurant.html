@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center; margin-top:40px;">
+  <h4>Add Restaurants Here</h4>
+
+</div>
+<div class="col-sm-12 col-xl-10" >
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Basic Form</h6>
+                            <form method="post" action="{% url 'save_restaurant' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                <div class="mb-3">
+                                    <label  class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" name="name">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Place</label>
+                                    <input type="text" class="form-control" placeholder="Place" name="place">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Star level</label>
+                                    <input type="text" class="form-control" placeholder="Star level" name="star">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Rate</label>
+                                    <input type="text" class="form-control" placeholder="Rate" name="rate">
+
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-label" placeholder="Description" name="description" rows="5" cols="102"></textarea>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label  class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Contact" name="contact">
+
+                                </div>
+                                <label>Image:</label>
+                                <input type="file" placeholder="Image" name="image"><br><br>
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="exampleInputPassword1" class="form-label">Password</label>-->
+<!--                                    <input type="password" class="form-control" id="exampleInputPassword1">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3 form-check">-->
+<!--                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                                </div>-->
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+             <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+</body>
+</html>
+{% endblock %}
